@@ -109,19 +109,25 @@ st.markdown("""
 # Helper functions
 @st.cache_data
 def load_data():
-    """Load data for dashboard"""
+    """Load all data files"""
     try:
-        # Try sample first (for Streamlit Cloud)
-        data = pd.read_csv('data/sample_for_deployment.csv')
-        st.info("📊 Using demo sample (10K orders). Full analysis used 1.4M orders.")
-    except FileNotFoundError:
-        try:
-            # Try full data (local development)
-            data = pd.read_csv('data/processed/processed_data.csv')
-        except FileNotFoundError:
-            st.error("Data files not found!")
-            st.stop()
-    return data
+        orders_train = pd.read_csv('data/order_products__train.csv')
+        products = pd.read_csv('data/products.csv')
+        aisles = pd.read_csv('data/aisles.csv')
+        departments = pd.read_csv('data/departments.csv')
+        
+        # Enrich products
+        products = products.merge(aisles, on='aisle_id', how='left')
+        products = products.merge(departments, on='department_id', how='left')
+        
+        # Merge orders with products
+        data = orders_train.merge(products, on='product_id', how='left')
+        
+        return data, products, orders_train
+    except FileNotFoundError as e:
+        st.error(f"Data files not found: {e}")
+        st.info("Please ensure data files are in the data/ directory")
+        st.stop()
 
 
 @st.cache_data
