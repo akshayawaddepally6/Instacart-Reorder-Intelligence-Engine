@@ -38,10 +38,33 @@ venv.bak/
 # Jupyter Notebook
 .ipynb_checkpoints
 
-# Data files (too large for GitHub)
-data/*.csv
+@"
+# Python
+__pycache__/
+*.py[cod]
+venv/
+env/
+
+# Models
+models/*.pkl
+
+# Outputs
+outputs/analytics/*.csv
+outputs/figures/*.png
+
+# Processed data only (keep raw data)
 data/processed/*.csv
-*.csv
+
+# Streamlit secrets
+.streamlit/secrets.toml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+"@ | Out-File -FilePath ".gitignore" -Encoding utf8
 
 # Models (too large for GitHub)
 models/*.pkl
