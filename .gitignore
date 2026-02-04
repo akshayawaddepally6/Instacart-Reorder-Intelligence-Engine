@@ -32,3 +32,7 @@ Thumbs.db
 .vscode/
 .idea/
 "@ | Out-File -FilePath ".gitignore" -Encoding utf8 -NoNewline
+
+
+load_Data.py
+ogapp.py
