@@ -1,58 +1,21 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Virtual Environment
-venv/
-env/
-ENV/
-env.bak/
-venv.bak/
-
-# PyCharm
-.idea/
-
-# VS Code
-.vscode/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
 @"
 # Python
 __pycache__/
 *.py[cod]
+*`$py.class
 venv/
 env/
+ENV/
 
 # Models
 models/*.pkl
+models/*.h5
 
-# Outputs
+# Outputs  
 outputs/analytics/*.csv
 outputs/figures/*.png
 
-# Processed data only (keep raw data)
+# Processed data only (keep raw CSV in data/)
 data/processed/*.csv
 
 # Streamlit secrets
@@ -62,57 +25,10 @@ data/processed/*.csv
 .DS_Store
 Thumbs.db
 
-# Environment
-.env
-"@ | Out-File -FilePath ".gitignore" -Encoding utf8
-
-# Models (too large for GitHub)
-models/*.pkl
-models/*.h5
-models/*.pt
-models/*.joblib
-
-# Outputs
-outputs/figures/*.png
-outputs/figures/*.jpg
-outputs/analytics/*.csv
-
-# Streamlit
-.streamlit/secrets.toml
-
-# OS
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Environment variables
-.env
-.env.local
-.env.*.local
-
 # Logs
 *.log
-logs/
 
-# Temporary files
-*.swp
-*.swo
-*~
-.*.swp
-.*.swo
-
-# pytest
-.pytest_cache/
-.coverage
-htmlcov/
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-data/*.csv 
-
+# IDE
+.vscode/
+.idea/
+"@ | Out-File -FilePath ".gitignore" -Encoding utf8 -NoNewline
